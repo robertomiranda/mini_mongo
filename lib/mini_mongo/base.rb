@@ -12,5 +12,7 @@ class MiniMongo::Base
       self.instance_eval("def #{key}=(val);@#{key}=val;end")
     end
     self.instance_eval("def to_json;#{attrs}.to_json;end")
+    self.instance_eval("def to_h;#{attrs};end")
   end
+
 end
