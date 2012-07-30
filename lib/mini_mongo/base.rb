@@ -5,6 +5,7 @@ class MiniMongo::Base
   def initialize(attrs = {})
     attrs["id"] = attrs["_id"].to_s
     attrs.delete("_id")
+    attrs.delete(:_id)
     attrs.each do |key, value|
       instance_variable_set("@#{key}", value)
       self.instance_eval("def #{key};@#{key};end")

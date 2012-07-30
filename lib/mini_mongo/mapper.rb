@@ -8,9 +8,15 @@ module MiniMongo
 
 
     module ClassMethods
-      def find(id, attrs={})
-        doc = @@collection.find("_id" => BSON::ObjectId(id)).to_a.first
-        self.class_eval("new(#{doc})")
+      def find(attrs={})
+        attrs["_id"] = BSON::ObjectId(attrs["id"]) if attrs["id"]
+        attrs.delete("id")
+        docs = @@collection.find(attrs).to_a
+        result = []
+        docs.each do |doc|
+          result << self.class_eval("new(#{doc})") if doc
+        end
+        result
       end
 
       def insert(attrs={})
@@ -22,11 +28,18 @@ module MiniMongo
 
       def update(id, attrs={})
         doc = @@collection.update({"_id" => BSON::ObjectId(id)}, attrs)
-        self.find(id)
       end
 
       def remove(id)
         @@collection.remove("_id" => BSON::ObjectId(id))
+      end
+
+      def count
+        @@collection.count
+      end
+
+      def remove_all
+        @@collection.remove
       end
 
       def maps(name)
