@@ -12,11 +12,15 @@ module MiniMongo
         attrs["_id"] = BSON::ObjectId(attrs["id"]) if attrs["id"]
         attrs.delete("id")
         docs = @@collection.find(attrs).to_a
-        result = []
-        docs.each do |doc|
-          result << self.class_eval("new(#{doc})") if doc
+        if docs.empty?
+          raise DocumentNotFound, "Couldn't find #{@@collection_name.capitalize}, with #{attrs.to_a.collect {|p| p.join(' = ')}.join(', ')}"
+        else
+          result = []
+          docs.each do |doc|
+            result << self.class_eval("new(#{doc})") if doc
+          end
+          result
         end
-        result
       end
 
       def insert(attrs={})
