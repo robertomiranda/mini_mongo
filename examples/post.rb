@@ -21,3 +21,7 @@ end
 #
 #Post.remove_all
 # => true
+#
+class Answer < MiniMongo::Base
+  maps :answers
+end

@@ -6,14 +6,13 @@ module MiniMongo
       base.send :extend, ClassMethods
     end
 
-
     module ClassMethods
       def find(attrs={})
         attrs["_id"] = BSON::ObjectId(attrs["id"]) if attrs["id"]
         attrs.delete("id")
-        docs = @@collection.find(attrs).to_a
+        docs = self.collection.find(attrs).to_a
         if docs.empty?
-          raise DocumentNotFound, "Couldn't find #{@@collection_name.capitalize}, with #{attrs.to_a.collect {|p| p.join(' = ')}.join(', ')}"
+          raise DocumentNotFound, "Couldn't find #{self.collection_name.capitalize}, with #{attrs.to_a.collect {|p| p.join(' = ')}.join(', ')}"
         else
           result = []
           docs.each do |doc|
@@ -25,31 +24,33 @@ module MiniMongo
 
       def insert(attrs={})
         doc = {}
-        doc["_id"] = @@collection.insert(attrs).to_s
+        doc["_id"] = self.collection.insert(attrs).to_s
         doc.merge!(attrs)
         self.class_eval("new(#{doc})")
       end
 
       def update(id, attrs={})
-        doc = @@collection.update({"_id" => BSON::ObjectId(id)}, attrs)
+        doc = self.collection.update({"_id" => BSON::ObjectId(id)}, attrs)
       end
 
       def remove(id)
-        @@collection.remove("_id" => BSON::ObjectId(id))
+        self.collection.remove("_id" => BSON::ObjectId(id))
       end
 
       def count
-        @@collection.count
+        self.collection.count
       end
 
       def remove_all
-        @@collection.remove
+        self.collection.remove
       end
 
       def maps(name)
-        @@collection_name = name.to_s
-        @@collection = MiniMongo.db_connection.collection(name.to_s)
+        cattr_accessor :collection_name, :collection
+        self.collection_name = name.to_s
+        self.collection = MiniMongo.db_connection.collection(name.to_s)
       end
+
     end
   end
 end
