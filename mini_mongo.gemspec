@@ -18,4 +18,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "mongo", "~> 1.6.4"
   gem.add_dependency "bson_ext", "~> 1.6.4"
   gem.add_dependency "activesupport", "~> 3.2.7"
+  gem.add_development_dependency "simplecov"
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency "rake"
 end

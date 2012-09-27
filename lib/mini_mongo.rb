@@ -1,5 +1,4 @@
-require "active_support"
-require 'active_support/core_ext'
+require 'active_support/all'
 module MiniMongo
   autoload :Connection, 'mini_mongo/connection'
   autoload :MiniMongoError, 'mini_mongo/errors'
