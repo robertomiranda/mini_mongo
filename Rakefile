@@ -20,3 +20,5 @@ task :spec do
     t.pattern = "spec/**/*_spec.rb"
   end
 end
+
+task :default => [:spec]
