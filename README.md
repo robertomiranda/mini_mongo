@@ -1,3 +1,4 @@
+[![Build Status](https://secure.travis-ci.org/robertomiranda/mini_mongo.png)](http://travis-ci.org/robertomiranda/mini_mongo)
 # MiniMongo
 
 A Ruby Object Mapper for Mongo
