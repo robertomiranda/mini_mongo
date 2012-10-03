@@ -30,7 +30,7 @@ module MiniMongo
       end
 
       def update(id, attrs={})
-        doc = self.collection.update({"_id" => BSON::ObjectId(id)}, attrs)
+        self.collection.update({"_id" => BSON::ObjectId(id)}, attrs)
       end
 
       def remove(id)
