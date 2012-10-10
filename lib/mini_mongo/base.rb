@@ -2,6 +2,7 @@ require "json"
 module MiniMongo
   class Base
     include MiniMongo::Mapper
+    include Comparable
 
     attr_reader :attributes
 
@@ -22,20 +23,6 @@ module MiniMongo
     # @return [ Integer ] -1, 0, 1.
     def <=>(other)
       attributes["id"].to_s <=> other.attributes["id"].to_s
-    end
-
-    # Performs equality checking on the document ids. For more robust
-    # equality checking please override this method.
-    #
-    # @example Compare for equality.
-    #   document == other
-    #
-    # @param [ Document, Object ] other The other object to compare with.
-    #
-    # @return [ true, false ] True if the ids are equal, false if not.
-    def ==(other)
-      self.class == other.class &&
-        attributes["id"] == other.attributes["id"]
     end
 
     # Performs class equality checking.
