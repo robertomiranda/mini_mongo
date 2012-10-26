@@ -1,5 +1,7 @@
 require "uri"
 require "mongo"
+require "active_support/core_ext/class/attribute_accessors"
+
 module MiniMongo
   module Mapper
     def self.included(base)
@@ -26,7 +28,7 @@ module MiniMongo
         doc = {}
         doc["_id"] = self.collection.insert(attrs).to_s
         doc.merge!(attrs)
-        self.class_eval("new(#{doc})")
+        self.new(doc)
       end
 
       def update(id, attrs={})

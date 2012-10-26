@@ -1,5 +1,6 @@
 require "uri"
 require "mongo"
+
 module MiniMongo
   module Connection
 
