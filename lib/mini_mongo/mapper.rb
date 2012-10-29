@@ -1,6 +1,5 @@
 require "uri"
 require "mongo"
-require "active_support/core_ext/class/attribute_accessors"
 
 module MiniMongo
   module Mapper
@@ -48,9 +47,24 @@ module MiniMongo
       end
 
       def maps(name)
-        cattr_accessor :collection_name, :collection
         self.collection_name = name.to_s
         self.collection = MiniMongo.db_connection.collection(name.to_s)
+      end
+
+      def collection
+        @@collection
+      end
+
+      def collection=(collection)
+        @@collection = collection
+      end
+
+      def collection_name
+        @@collection_name
+      end
+
+      def collection_name=(collection_name)
+        @@collection_name = collection_name
       end
 
     end
