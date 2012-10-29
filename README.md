@@ -5,6 +5,12 @@ A Ruby Object Mapper for Mongo
 
 ## Installation
 
+### Ruby Versions
+
+The ORM works and is consistently tested on Ruby 1.9.2 and 1.9.3
+
+### Gems
+
 Add this line to your application's Gemfile:
 
     gem 'mini_mongo'
@@ -19,7 +25,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Here's an example:
+
 
 ## Contributing
 
