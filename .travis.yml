@@ -10,6 +10,6 @@ branches:
 matrix:
   include:
     - rvm: jruby
-      env: '--1.9 --server -Xcext.enabled=true'
+      env: JRUBY_OPTS="--1.9 --server -Xcext.enabled=true"
     - rvm: jruby-head
-      env: '--1.9 --server -Xcext.enabled=true'
+      env: JRUBY_OPTS="--1.9 --server -Xcext.enabled=true"
