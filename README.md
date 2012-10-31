@@ -7,7 +7,7 @@ A Ruby Object Mapper for Mongo
 
 ### Ruby Versions
 
-The ORM works and is consistently tested on Ruby 1.9.2 and 1.9.3
+The ORM works and is consistently tested on Ruby, JRuby 1.9.x and Rubinius
 
 ### Gems
 
