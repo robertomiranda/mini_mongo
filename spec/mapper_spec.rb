@@ -20,7 +20,7 @@ describe "Mapper" do
     end
 
     it "raise Document not found" do
-      -> { Post.find(:author => "Chuck Norri") }.should raise_error(MiniMongo::DocumentNotFound)
+      proc { Post.find(:author => "Chuck Norri") }.should raise_error(MiniMongo::DocumentNotFound)
     end
   end
 
