@@ -7,7 +7,7 @@ A Ruby Object Mapper for Mongo
 
 ### Ruby Versions
 
-The ORM works and is consistently tested on Ruby, JRuby 1.9.x and Rubinius
+This ODM works and is consistently tested on: MRI 1.9.2/1.9.3, JRuby (in 1.9 mode) and Rubinius (in 1.9 mode)
 
 ### Gems
 
@@ -17,7 +17,7 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -25,7 +25,7 @@ Or install it yourself as:
 
 ## Usage
 
-Here's an example:
+TODO
 
 
 ## Contributing
