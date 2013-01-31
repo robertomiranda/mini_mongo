@@ -27,7 +27,59 @@ Or install it yourself as:
 
 ## Usage
 
-TODO
+### Configuring
+
+To get started configure the ODM with your db info using your database url
+
+```ruby
+MiniMongo.configure do |config|
+  config.database_url = "mongodb://:@localhost:27017/posts"
+  config.slave_ok = true # default is false
+end
+```
+
+or passing directly all the params
+
+```ruby
+MiniMongo.configure do |config|
+  config.db_name = "posts"
+  config.db_user = ""
+  config.db_password = ""
+  config.db_host = "localhost"
+  config.db_port = "27017"
+end
+```
+
+### Mapping
+
+```ruby
+require "mini_mongo"
+MiniMongo.configure do|config|
+  config.database_url = "mongodb://:@localhost:27017/posts"
+end
+
+class Post < MiniMongo::Base
+  maps :posts
+end
+
+# Post.insert({:author => "Chuck Norris"})
+# => #<Post:0x007fe5240f42c0 @id="5016af53bda74305f1000002", @author="Chuck Norris">
+
+# Post.find("id" => "5016af53bda74305f1000002")
+# => #<Post:0x007fe5240cc360 @id="5016af53bda74305f1000002", @author="Chuck Norris">
+#
+# Post.update("5016af53bda74305f1000002", "author" => "chuck norris")
+# => #<Post:0x007fdc7c171c80 @author="chuck norris", @id="5016af53bda74305f1000002">
+#
+#Post.count
+# => 1
+#
+#Post.remove("5016af53bda74305f1000002")
+# => true
+#
+#Post.remove_all
+# => true
+```
 
 
 ## Contributing
