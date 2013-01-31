@@ -34,7 +34,7 @@ To get started configure the ODM with your db info using your database url
 ```ruby
 MiniMongo.configure do |config|
   config.database_url = "mongodb://:@localhost:27017/posts"
-  config.slave_ok = true # default is false
+  config.slave_ok = true # by default is false
 end
 ```
 
