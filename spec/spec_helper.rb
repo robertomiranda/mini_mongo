@@ -5,7 +5,11 @@ SimpleCov.start
 
 require 'bundler/setup'
 Dir["./lib/*.rb"].each {|file| require file }
-MiniMongo.database_url = "mongodb://:@localhost:27017/posts"
+
+MiniMongo.configure do |config|
+  config.database_url = "mongodb://:@localhost:27017/posts"
+end
+
 Dir["./spec/models/*.rb"].each {|file| require file }
 
 RSpec.configure do |config|

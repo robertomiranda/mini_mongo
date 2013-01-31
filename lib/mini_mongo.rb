@@ -1,3 +1,4 @@
+require "mini_mongo/configuration"
 module MiniMongo
   autoload :Connection, 'mini_mongo/connection'
   autoload :MiniMongoError, 'mini_mongo/errors'
