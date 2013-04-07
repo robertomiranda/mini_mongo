@@ -1,3 +1,4 @@
+require "json"
 module MiniMongo
   module Serialization
     def to_json
