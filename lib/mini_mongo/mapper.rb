@@ -52,19 +52,19 @@ module MiniMongo
       end
 
       def collection
-        @@collection
+        self.class_variable_get(:@@collection)
       end
 
       def collection=(collection)
-        @@collection = collection
+        self.class_variable_set(:@@collection, collection)
       end
 
       def collection_name
-        @@collection_name
+        self.class_variable_get(:@@collection_name)
       end
 
       def collection_name=(collection_name)
-        @@collection_name = collection_name
+        self.class_variable_set(:@@collection_name, collection_name)
       end
 
     end

@@ -52,4 +52,12 @@ describe "Mapper" do
     end
   end
 
+  describe "collection_name" do
+    it "each model should have a different collection name" do
+      collection1 = Post.collection_name
+      collection2 = Author.collection_name
+      collection1.should_not == collection2
+    end
+  end
+
 end
