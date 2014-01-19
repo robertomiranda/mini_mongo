@@ -62,11 +62,16 @@ class Post < MiniMongo::Base
   maps :posts
 end
 
+### Examples
 # Post.insert({:author => "Chuck Norris"})
 # => #<Post:0x007fe5240f42c0 @id="5016af53bda74305f1000002", @author="Chuck Norris">
 
 # Post.find("id" => "5016af53bda74305f1000002")
 # => #<Post:0x007fe5240cc360 @id="5016af53bda74305f1000002", @author="Chuck Norris">
+#
+# Find cursor method sort, limit and skip support
+# Post.find({"id" => "5016af53bda74305f1000002"}, {:limit => 1})
+# => #<Post:0x007fe5240cc363 @id="5016af53bda74305f1000003", @author="Bruce Lee">
 #
 # Post.update("5016af53bda74305f1000002", "author" => "chuck norris")
 # => #<Post:0x007fdc7c171c80 @author="chuck norris", @id="5016af53bda74305f1000002">

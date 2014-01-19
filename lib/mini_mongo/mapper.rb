@@ -8,12 +8,15 @@ module MiniMongo
     end
 
     module ClassMethods
-      def find(attrs={})
+      def find(attrs={}, opts={})
         attrs["_id"] = BSON::ObjectId(attrs["id"]) if attrs["id"]
         attrs.delete("id")
-        docs = self.collection.find(attrs).to_a
+        docs = self.collection.find(attrs, opts).to_a
         if docs.empty?
-          raise DocumentNotFound, "Couldn't find #{self.collection_name.capitalize}, with #{attrs.to_a.collect {|p| p.join(' = ')}.join(', ')}"
+          raise DocumentNotFound,
+          "Couldn't find #{self.collection_name.capitalize}, "
+          "with #{attrs.to_a.collect {|p| p.join(' = ')}.join(', ')}"
+          "and #{opts.to_a.collect {|p| p.join(' = ')}.join(', ')}"
         else
           result = []
           docs.each do |doc|
