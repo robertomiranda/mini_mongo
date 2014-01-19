@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "mini_mongo"
   gem.require_paths = ["lib"]
   gem.version       = MiniMongo::VERSION
+  gem.license       = "MIT"
 
   gem.add_dependency "mongo", "~> 1.9.2"
   gem.add_development_dependency "simplecov"
