@@ -7,7 +7,7 @@ A Ruby Object Mapper for Mongo
 
 ### Ruby Versions
 
-This ODM works and is consistently tested on: CRuby 1.9.x, JRuby (in 1.9 mode) and Rubinius (in 1.9 mode). CRuby 2.0 isn't supported right now since bson_ext dependency is failing during install.
+This ODM works and is consistently tested on: CRuby 1.9.x-2.x, JRuby (in 1.9 mode) and Rubinius (in 1.9 mode). CRuby 2.0 isn't supported right now since bson_ext dependency is failing during install.
 
 We don't have plans to support 1.8.x rubies
 
